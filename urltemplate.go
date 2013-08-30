@@ -18,6 +18,7 @@ type RouteTemplate struct {
 type RouteTemplateMatch struct {
 	BoundVariables map[string]string
 	TemplatePath   string
+	RegExPath      string
 	CanidatePath   string
 }
 
@@ -80,7 +81,8 @@ func IsMatch(candidate string, routeTemplate RouteTemplate) (matched bool, err e
 func BindVariables(candidate string, routeTemplate RouteTemplate) (matched RouteTemplateMatch, err error) {
 	var routeTemplateMatch = RouteTemplateMatch{}
 	routeTemplateMatch.CanidatePath = candidate
-	routeTemplateMatch.TemplatePath = routeTemplate.RegExPath
+	routeTemplateMatch.TemplatePath = routeTemplate.TemplatePath
+	routeTemplateMatch.RegExPath = routeTemplate.RegExPath
 
 	routeTemplateMatch.BoundVariables = make(map[string]string)
 	//if match, _ := IsMatch(candidate, routeTemplate); match == true {

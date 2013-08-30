@@ -163,6 +163,7 @@ func Test_MatchTemplateObject(t *testing.T) { //test function starts with "Test"
 		t.Error("Test_MatchTemplateObject did return the correct expression.")
 	} else {
 		//fmt.Printf("%q\n", template)
+		fmt.Printf("%q\n", matchTemplateObject.TemplatePath)
 
 		if matchTemplateObject.TemplatePath != template3a {
 			t.Error("Test_MatchTemplateObject did not work as expected.")
@@ -170,3 +171,6 @@ func Test_MatchTemplateObject(t *testing.T) { //test function starts with "Test"
 	}
 	ClearAllTemplates()
 }
+
+//routes.MapHttpRoute("some name", "routeTemplate/{routeTemplate}/etc/{etc}", struct with functions? or function, since function signature needs to match)
+//

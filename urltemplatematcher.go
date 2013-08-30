@@ -33,7 +33,7 @@ func GetMatchTemplate(url string) (routeTemplateMatch RouteTemplateMatch, err er
 		wasMatched, _ := IsMatch(url, value)
 		if wasMatched {
 
-			//routeTemplateMatch = value
+			routeTemplateMatch, _ = BindVariables(url, value)
 			break
 		}
 	}
