@@ -1,7 +1,8 @@
 package routetemplate
 
 import (
-	_ "fmt"
+	"fmt"
+	"reflect"
 )
 
 var routeTemplates []RouteTemplate
@@ -52,6 +53,18 @@ func GetMatchedTemplate(url string) (template string, err error) {
 		}
 	}
 	return template, nil
+}
+
+func AddRoute(name string, method string, urlTemplate string, handler interface{}) {
+	fmt.Printf("%q\n", handler)
+	var x reflect.Value
+	if fv, ok := handler.(reflect.Value); ok {
+		x = fv
+	} else {
+		x = reflect.ValueOf(handler)
+	}
+	x.Call()
+	fmt.Printf("%q\n", x)
 }
 
 func GetAllTemplates() (templates []RouteTemplate, err error) {

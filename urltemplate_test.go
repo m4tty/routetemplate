@@ -142,6 +142,17 @@ func Test_VariableBinding(t *testing.T) { //test function starts with "Test" and
 	}
 }
 
+type TestController struct {
+}
+
+func (testController TestController) SomeActionHandler() {
+
+}
+func Test_AddRoute(t *testing.T) {
+	var testController = TestController{}
+	AddRoute("name", "method", "urlTemplate", testController.SomeActionHandler)
+}
+
 func Test_MatchTemplateObject(t *testing.T) { //test function starts with "Test" and takes a pointer to type testing.T
 	var template1 = "/test1/blah/{id:numeric}/whats/{what}"
 	var template1a = "/test1/blah/{id}/whats/{what}"
@@ -172,5 +183,7 @@ func Test_MatchTemplateObject(t *testing.T) { //test function starts with "Test"
 	ClearAllTemplates()
 }
 
+// unless you can pass a pointer to a function in an Interface type
+//routes.MapRoute("some other name", "GET", "users/{id}", &structWithFunctions, "functionName")
 //routes.MapHttpRoute("some name", "routeTemplate/{routeTemplate}/etc/{etc}", struct with functions? or function, since function signature needs to match)
 //
