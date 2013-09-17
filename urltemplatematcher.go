@@ -63,7 +63,9 @@ func AddRoute(name string, method string, urlTemplate string, handler interface{
 	} else {
 		x = reflect.ValueOf(handler)
 	}
-	x.Call()
+
+	args := make([]reflect.Value, 0, 0)
+	x.Call(args)
 	fmt.Printf("%q\n", x)
 }
 

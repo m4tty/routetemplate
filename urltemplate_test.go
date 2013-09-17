@@ -146,7 +146,7 @@ type TestController struct {
 }
 
 func (testController TestController) SomeActionHandler() {
-
+	fmt.Printf("%q\n", "SomeActionHandler")
 }
 func Test_AddRoute(t *testing.T) {
 	var testController = TestController{}
